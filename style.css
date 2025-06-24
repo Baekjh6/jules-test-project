@@ -3,9 +3,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */ /* min-height로 대체 */
     margin: 0;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */ /* 배경 이미지 사용으로 제거 */
+    background-image: url('https://raw.githubusercontent.com/Baekjh6/jules-test-project/main/MBTI_dogs_background_image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* 최소 높이를 뷰포트 높이로 설정 */
+    filter: brightness(0.8); /* 가독성 향상을 위한 밝기 조절 */
 }
 
 .container {
@@ -45,4 +51,98 @@ button:hover {
 
 #quiz-container label {
     margin-left: 5px;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+
+/* 작은 화면 (스마트폰 등, 최대 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* 기본 폰트 크기 조정 */
+        padding: 15px; /* body 전체 패딩 조정 */
+    }
+
+    .container {
+        padding: 20px; /* 컨테이너 내부 패딩 조정 */
+    }
+
+    /*
+       .question-container는 명시적으로 사용되지 않았지만,
+       퀴즈 질문/선택지 영역이 quiz-container 내부에 동적으로 생성되므로
+       quiz-container 내의 버튼을 대상으로 스타일 조정이 필요할 수 있습니다.
+       현재는 #quiz-container 내 form 안의 button을 대상으로 합니다.
+    */
+    #quiz-container button { /* 질문 영역 내 버튼 */
+        font-size: 1em;
+        padding: 10px 15px;
+        margin: 5px;
+    }
+
+    #result-container { /* 결과 표시 영역 */
+        padding: 30px 15px;
+    }
+
+    /* 시작 버튼에도 적용될 수 있도록 일반 button 태그에 대한 스타일 조정 */
+    button {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
+
+/* 중간 화면 (태블릿 등, 769px ~ 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+        padding: 20px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    #quiz-container button {
+        font-size: 1.1em;
+        padding: 12px 20px;
+        margin: 8px;
+    }
+
+    #result-container {
+        padding: 40px 20px;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 12px 20px;
+    }
+}
+
+/* 큰 화면 (데스크톱 등, 1025px 이상) */
+@media (min-width: 1025px) {
+    body {
+        font-size: 20px;
+        padding: 30px;
+    }
+
+    .container {
+        max-width: 800px; /* 컨테이너 최대 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬 */
+        padding: 40px;
+    }
+
+    #quiz-container button {
+        font-size: 1.2em;
+        padding: 15px 25px;
+        margin: 10px;
+    }
+
+    #result-container {
+        max-width: 600px; /* 결과 컨테이너 최대 너비 설정 */
+        margin: 0 auto; /* 가운데 정렬 */
+        padding: 50px;
+    }
+
+    button {
+        font-size: 1.2em;
+        padding: 15px 25px;
+    }
 }
